@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearts on Wheels</title>
+<style>
+  :root{
+    --bg:#fbf7f4; --card:#fff; --ink:#1a1614; --muted:#6d6560;
+    --line:#eae2dc; --accent:#c2384a; --accent-ink:#fff;
+    --soft:#fdeef0; --good:#0d7a4a; --warn:#8a5a00; --warnbg:#fff6e0;
+    --shadow:0 1px 2px rgba(0,0,0,.04),0 10px 30px rgba(0,0,0,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14100f; --card:#1e1917; --ink:#f6f1ee; --muted:#a89e98;
+      --line:#332b28; --accent:#ff7a8a; --accent-ink:#2a0209;
+      --soft:#2c1a1d; --good:#5ee0a0; --warn:#f5c451; --warnbg:#2e2410;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14100f; --card:#1e1917; --ink:#f6f1ee; --muted:#a89e98;
+    --line:#332b28; --accent:#ff7a8a; --accent-ink:#2a0209;
+    --soft:#2c1a1d; --good:#5ee0a0; --warn:#f5c451; --warnbg:#2e2410;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--ink); margin:0; padding-block:0 40px;
+    font:17px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap{max-width:620px; margin:0 auto; padding-inline:18px}
+
+  /* header */
+  header{padding-block:26px 4px; text-align:center}
+  .kicker{color:var(--accent); font-weight:800; letter-spacing:.14em; font-size:12px; text-transform:uppercase; margin:0 0 6px}
+  h1{font-size:clamp(32px,9vw,46px); margin:0; letter-spacing:-.025em; line-height:1.05}
+  .when{color:var(--muted); margin:8px 0 0; font-size:16px}
+
+  .prov{
+    background:var(--warnbg); color:var(--warn); border-radius:9px;
+    padding:9px 13px; font-size:14px; margin:14px 0 0; text-align:center; font-weight:600;
+  }
+
+  /* NOW card */
+  .now{
+    background:var(--accent); color:var(--accent-ink); border-radius:18px;
+    padding:24px 20px; margin:18px 0 12px; box-shadow:var(--shadow);
+  }
+  .now.alert{animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+  @media (prefers-reduced-motion: reduce){ .now.alert{animation:none} }
+  .now-label{font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin:0 0 8px}
+  .now-big{font-size:clamp(25px,6.5vw,34px); font-weight:800; line-height:1.15; margin:0; letter-spacing:-.02em}
+  .now-sub{margin:10px 0 0; font-size:16px; opacity:.92}
+  .now-next{
+    margin:16px 0 0; padding-top:13px; border-top:1px solid rgba(255,255,255,.28);
+    font-size:14px; opacity:.9;
+  }
+  :root[data-theme="dark"] .now-next, :root:not([data-theme="light"]) .now-next{border-top-color:rgba(0,0,0,.2)}
+
+  /* buttons */
+  .acts{display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:26px}
+  .acts a{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
+    background:var(--card); border:1px solid var(--line); border-radius:13px;
+    padding:14px 6px; text-decoration:none; color:var(--ink);
+    font-size:13px; font-weight:650; text-align:center; line-height:1.25;
+    box-shadow:var(--shadow); min-height:74px;
+  }
+  .acts a:active{transform:translateY(1px)}
+  .acts .ic{font-size:21px; line-height:1}
+
+  /* sections */
+  section{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:20px; margin-bottom:14px; box-shadow:var(--shadow);
+  }
+  h2{font-size:13px; margin:0 0 14px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:800}
+  p{margin:0 0 10px}
+  p:last-child{margin-bottom:0}
+  .big{font-size:20px; font-weight:700; letter-spacing:-.01em}
+  .sub{color:var(--muted); font-size:15px}
+  a{color:var(--accent)}
+
+  /* run of show */
+  .run{list-style:none; margin:0; padding:0}
+  .run li{display:flex; gap:14px; padding:11px 0; border-top:1px solid var(--line); align-items:baseline}
+  .run li:first-child{border-top:0}
+  .run .t{flex:0 0 62px; font-weight:800; font-variant-numeric:tabular-nums; font-size:15px}
+  .run li.star{background:var(--soft); margin-inline:-20px; padding-inline:20px; border-radius:10px; border-top-color:transparent}
+  .run li.star .t, .run li.star .d{color:var(--accent)}
+  .run li.star .d{font-weight:750}
+  .run .note{display:block; font-size:13.5px; color:var(--muted); font-weight:400; margin-top:3px}
+  .run li.star .note{color:var(--accent); opacity:.85}
+  .run li.done{opacity:.42}
+  .run li.cur{background:var(--soft); margin-inline:-20px; padding-inline:20px; border-radius:10px}
+  .run li.cur .t{color:var(--accent)}
+
+  /* checklists */
+  .chk{list-style:none; margin:0; padding:0}
+  .chk li{border-top:1px solid var(--line)}
+  .chk li:first-child{border-top:0}
+  .chk label{display:flex; gap:12px; align-items:flex-start; padding:12px 0; cursor:pointer}
+  .chk input{
+    flex:0 0 auto; width:23px; height:23px; margin:0; accent-color:var(--accent); cursor:pointer;
+  }
+  .chk span{flex:1 1 auto}
+  .chk .why{display:block; font-size:13.5px; color:var(--muted); margin-top:2px}
+  .chk input:checked + span{opacity:.5; text-decoration:line-through}
+  .chk input:checked + span .why{text-decoration:none}
+  .prog{
+    display:flex; align-items:center; gap:10px; margin-bottom:12px;
+    font-size:14px; color:var(--muted); font-weight:600;
+  }
+  .bar{flex:1 1 auto; height:7px; background:var(--line); border-radius:99px; overflow:hidden}
+  .bar i{display:block; height:100%; width:0; background:var(--accent); border-radius:99px; transition:width .25s}
+
+  /* dos and donts */
+  .rules{list-style:none; margin:0; padding:0}
+  .rules li{display:flex; gap:11px; padding:9px 0; border-top:1px solid var(--line); align-items:flex-start}
+  .rules li:first-child{border-top:0}
+  .rules .m{flex:0 0 22px; font-weight:800; font-size:17px; line-height:1.4}
+  .rules .yes{color:var(--good)}
+  .rules .no{color:var(--accent)}
+
+  .flag{
+    background:var(--soft); border-radius:11px; padding:13px 15px; margin-top:14px; font-size:15px;
+  }
+  .flag b{display:block; margin-bottom:3px}
+
+  .ph{
+    background:var(--warnbg); color:var(--warn); border-radius:5px;
+    padding:1px 7px; font-weight:800; font-size:.92em; white-space:nowrap;
+  }
+
+  .wa{
+    display:block; background:var(--good); color:#fff; text-align:center;
+    padding:15px; border-radius:12px; font-weight:750; text-decoration:none; margin-top:14px; font-size:16px;
+  }
+  :root[data-theme="dark"] .wa, :root:not([data-theme="light"]) .wa{color:#04140c}
+
+  .contact{display:flex; justify-content:space-between; gap:12px; padding:11px 0; border-top:1px solid var(--line); flex-wrap:wrap}
+  .contact:first-of-type{border-top:0}
+  .contact b{font-weight:700}
+
+  footer{color:var(--muted); font-size:13px; text-align:center; margin-top:26px; line-height:1.65}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="kicker">Department Volunteering</p>
+  <h1>Hearts on Wheels</h1>
+  <p class="when" id="when"></p>
+  <div class="prov" id="prov">⚠ Timings still to be confirmed with TOUCH</div>
+</header>
+
+<div class="now" id="now">
+  <p class="now-label" id="nowLabel">Right now</p>
+  <p class="now-big" id="nowBig">Loading…</p>
+  <p class="now-sub" id="nowSub"></p>
+  <p class="now-next" id="nowNext"></p>
+</div>
+
+<div class="acts">
+  <a id="btnCall" href="#"><span class="ic">📞</span>Call organiser</a>
+  <a id="btnMap" href="#" target="_blank" rel="noopener"><span class="ic">📍</span>Open in Maps</a>
+  <a id="btnWa" href="#" target="_blank" rel="noopener"><span class="ic">📸</span>Send photos</a>
+</div>
+
+<section>
+  <h2>Where &amp; when</h2>
+  <p class="big" id="venue"></p>
+  <p class="sub" id="address"></p>
+  <p class="sub" id="datetime" style="margin-top:8px"></p>
+  <div class="flag">
+    <b>Getting there</b>
+    Nearest MRT is <b>Bukit Gombak</b> (NS3), then a short bus or walk.
+    Driving? There is parking at the CC — come early, it fills up.
+    Not sure what time to leave home?
+    <a href="https://joypehwork-ui.github.io/ontimebo/" target="_blank" rel="noopener">Check on ontimebo</a>.
+  </div>
+</section>
+
+<section>
+  <h2>Run of show</h2>
+  <ul class="run" id="run"></ul>
+</section>
+
+<section>
+  <h2>Photos — we must send these to the office</h2>
+  <div class="prog"><span id="photoPct">0 of 3</span><span class="bar"><i id="photoBar"></i></span></div>
+  <ul class="chk" id="photoList"></ul>
+  <div class="flag">
+    <b>Before you photograph a senior — ask.</b>
+    Never shoot inside someone's home, and no faces without permission. If in doubt, photograph the
+    team and the meals instead.
+  </div>
+  <a class="wa" id="btnWa2" href="#" target="_blank" rel="noopener">📸 Send photos to the group</a>
+  <p class="sub" style="margin-top:10px; text-align:center" id="photoDue"></p>
+</section>
+
+<section>
+  <h2>Bring these</h2>
+  <div class="prog"><span id="bringPct">0 of 6</span><span class="bar"><i id="bringBar"></i></span></div>
+  <ul class="chk" id="bringList"></ul>
+</section>
+
+<section>
+  <h2>At the door</h2>
+  <ul class="rules">
+    <li><span class="m yes">✓</span><span>Say hello and give your name. Check the name on the packet matches.</span></li>
+    <li><span class="m yes">✓</span><span>Hand the meal over with both hands.</span></li>
+    <li><span class="m yes">✓</span><span>Stay a minute. Ask how they are. For some, you are the only person they speak to today.</span></li>
+    <li><span class="m no">✕</span><span>Don't go inside the home.</span></li>
+    <li><span class="m no">✕</span><span>Don't give money, and don't accept gifts.</span></li>
+    <li><span class="m no">✕</span><span>Don't leave a meal outside an unanswered door.</span></li>
+  </ul>
+  <div class="flag">
+    <b>Nobody answers?</b>
+    Knock again, call out, wait a moment. Still nothing — tell the organiser or TOUCH straight away.
+    Don't just move on. A senior not answering can be an emergency.
+  </div>
+  <div class="flag">
+    <b>Meals are labelled</b>
+    Halal, vegetarian and blended soft meals are not interchangeable. Check the label against the
+    name every time.
+  </div>
+</section>
+
+<section>
+  <h2>Who to call</h2>
+  <div class="contact"><span>Organiser</span><b id="orgLine"></b></div>
+  <div class="contact"><span>TOUCH Home Care</span><b><a href="tel:68046555">6804 6555</a></b></div>
+</section>
+
+<footer>
+  Meals-on-Wheels with TOUCH Home Care<br>
+  Thank you for giving up your Sunday afternoon.
+</footer>
+
+</div>
+
+<script>
+"use strict";
+
+/* =====================================================================
+   EDIT THIS BLOCK — everything on the page comes from here.
+   ===================================================================== */
+var EVENT = {
+  name:     "Hearts on Wheels",
+  dateISO:  "2026-09-20",              // Sunday
+  dateText: "Sunday, 20 September 2026",
+  venue:    "Hong Kah North Community Club",
+  address:  "30 Bukit Batok Street 31, Singapore 659440",
+
+  provisional: true,                   // set false once TOUCH confirms the timings
+
+  // --- PLACEHOLDERS: fill these in before you send the link ---
+  organiserName:  "[YOUR NAME]",
+  organiserPhone: "[YOUR MOBILE]",     // digits only, e.g. 8 digits — becomes a tap-to-call link
+  whatsappLink:   "[WHATSAPP GROUP LINK]",
+  photoDeadline:  "tonight, by 10pm",
+
+  // Run of show. Times are 24h "HH:MM". star:true = the unmissable one.
+  schedule: [
+    { t:"15:00", d:"Arrive and sign in",      note:"Briefing by TOUCH staff at the CC" },
+    { t:"15:20", d:"Sort and pack the meals", note:"Check the labels as you pack" },
+    { t:"15:40", d:"GROUP PHOTO",             note:"Everyone together, with the banner. Do this before anyone drives off.", star:true },
+    { t:"15:50", d:"Load cars and go",        note:"Driver plus 2–3 runners per car" },
+    { t:"16:00", d:"Deliveries",              note:"Your zone is in the WhatsApp group" },
+    { t:"17:45", d:"Last drop",               note:"No need to return to the CC" },
+    { t:"18:00", d:"Done — head home",        note:"Send your photos before you forget" }
+  ],
+
+  photos: [
+    { k:"grp",  txt:"Group photo with the department banner", why:"The one we cannot retake. Before cars leave." },
+    { k:"pack", txt:"Packing the meals",                      why:"Candid shots at the CC" },
+    { k:"load", txt:"Loading the cars",                       why:"Or a team shot on the route" }
+  ],
+
+  bring: [
+    { k:"shoes", txt:"Covered shoes",   why:"Lots of stairs and corridors. No slippers." },
+    { k:"water", txt:"Water bottle",    why:"It gets warm out there" },
+    { k:"brolly",txt:"Umbrella",        why:"September. Assume rain." },
+    { k:"phone", txt:"Charged phone",   why:"For photos and for reaching your team" },
+    { k:"sani",  txt:"Hand sanitiser",  why:"" },
+    { k:"towel", txt:"Small towel",     why:"" }
+  ]
+};
+
+/* ---------------------------------------------------------------------
+   TEAMS — intentionally left out of this page.
+   Car assignments contain colleagues' names, so they go out over
+   WhatsApp instead, not on a public web page.
+
+   If you ever do want them here, add them below AND remember that
+   re-publishing puts those names on the public internet.
+
+   var TEAMS = [
+     { car:"Car 1", driver:"...", runners:["...","..."] },
+   ];
+   --------------------------------------------------------------------- */
+
+/* ===================================================================== */
+
+var $ = function(id){ return document.getElementById(id); };
+
+/* Clock. Override with ?now=2026-09-20T15:38 to preview any moment. */
+function nowDate(){
+  var q = (location.search.match(/[?&]now=([^&]+)/) || [])[1];
+  if (q){
+    var d = new Date(decodeURIComponent(q).replace(" ", "T"));
+    if (!isNaN(d.getTime())) return d;
+  }
+  return new Date();
+}
+
+function hhmmToMins(s){ var p = s.split(":"); return (+p[0]) * 60 + (+p[1]); }
+
+function fmtTime(mins){
+  var h = Math.floor(mins / 60), m = mins % 60;
+  var ap = h < 12 ? "am" : "pm", h12 = h % 12; if (h12 === 0) h12 = 12;
+  return h12 + "." + (m < 10 ? "0" : "") + m + ap;
+}
+
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* A placeholder is anything still in [SQUARE BRACKETS]. */
+function isPlaceholder(v){ return /^\[.*\]$/.test(String(v || "").trim()); }
+function showVal(v){ return isPlaceholder(v) ? '<span class="ph">' + esc(v) + '</span>' : esc(v); }
+
+/* ---- static bits ---- */
+(function fill(){
+  $("when").textContent = EVENT.dateText + " · " +
+    fmtTime(hhmmToMins(EVENT.schedule[0].t)) + " – " +
+    fmtTime(hhmmToMins(EVENT.schedule[EVENT.schedule.length - 1].t));
+
+  if (!EVENT.provisional) $("prov").hidden = true;
+
+  $("venue").textContent = EVENT.venue;
+  $("address").textContent = EVENT.address;
+  $("datetime").textContent = EVENT.dateText + ", from " + fmtTime(hhmmToMins(EVENT.schedule[0].t));
+  $("photoDue").textContent = "Please send them " + EVENT.photoDeadline + ".";
+
+  $("orgLine").innerHTML = showVal(EVENT.organiserName) + " · " + showVal(EVENT.organiserPhone);
+
+  // action buttons
+  var tel = String(EVENT.organiserPhone || "").replace(/[^0-9+]/g, "");
+  $("btnCall").href = (!isPlaceholder(EVENT.organiserPhone) && tel) ? "tel:" + tel : "#";
+
+  var maps = "https://www.google.com/maps/search/?api=1&query=" +
+             encodeURIComponent(EVENT.venue + ", " + EVENT.address);
+  $("btnMap").href = maps;
+
+  var wa = isPlaceholder(EVENT.whatsappLink) ? "#" : EVENT.whatsappLink;
+  $("btnWa").href = wa;
+  $("btnWa2").href = wa;
+})();
+
+/* ---- run of show ---- */
+function renderRun(minsNow, isToday){
+  var out = "", s = EVENT.schedule, i;
+  for (i = 0; i < s.length; i++){
+    var start = hhmmToMins(s[i].t);
+    var end = (i + 1 < s.length) ? hhmmToMins(s[i+1].t) : start + 30;
+    var cls = [];
+    if (s[i].star) cls.push("star");
+    if (isToday){
+      if (minsNow >= end) cls.push("done");
+      else if (minsNow >= start) cls.push("cur");
+    }
+    out += '<li class="' + cls.join(" ") + '">' +
+             '<span class="t">' + fmtTime(start) + '</span>' +
+             '<span class="d">' + esc(s[i].d) +
+               (s[i].note ? '<span class="note">' + esc(s[i].note) + '</span>' : '') +
+             '</span></li>';
+  }
+  $("run").innerHTML = out;
+}
+
+/* ---- checklists, saved locally ---- */
+function makeList(elId, items, storeKey, pctId, barId){
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(storeKey) || "{}") || {}; } catch(e){}
+
+  var out = "", i;
+  for (i = 0; i < items.length; i++){
+    var it = items[i];
+    out += '<li><label>' +
+             '<input type="checkbox" data-k="' + it.k + '"' + (saved[it.k] ? " checked" : "") + '>' +
+             '<span>' + esc(it.txt) +
+               (it.why ? '<span class="why">' + esc(it.why) + '</span>' : '') +
+             '</span></label></li>';
+  }
+  $(elId).innerHTML = out;
+
+  function sync(){
+    var boxes = $(elId).querySelectorAll("input"), n = 0, j;
+    for (j = 0; j < boxes.length; j++) if (boxes[j].checked) n++;
+    $(pctId).textContent = n + " of " + boxes.length;
+    $(barId).style.width = (boxes.length ? (n / boxes.length * 100) : 0) + "%";
+  }
+
+  $(elId).addEventListener("change", function(e){
+    var k = e.target.getAttribute("data-k");
+    if (!k) return;
+    saved[k] = e.target.checked;
+    try { localStorage.setItem(storeKey, JSON.stringify(saved)); } catch(err){}
+    sync();
+  });
+  sync();
+}
+
+/* ---- the NOW card ---- */
+function renderNow(){
+  var d = nowDate();
+  var eventDay = new Date(EVENT.dateISO + "T00:00:00");
+  var today = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  var dayDiff = Math.round((eventDay - today) / 86400000);
+  var minsNow = d.getHours() * 60 + d.getMinutes();
+  var s = EVENT.schedule;
+  var first = hhmmToMins(s[0].t), last = hhmmToMins(s[s.length - 1].t);
+
+  var label = "Right now", big = "", sub = "", next = "", alert = false;
+
+  if (dayDiff > 1){
+    label = "Coming up";
+    big = dayDiff + " days to go";
+    sub = "Sunday afternoon, " + EVENT.venue + ".";
+    next = "Tick off the “Bring these” list below so you're not scrambling on the day.";
+  } else if (dayDiff === 1){
+    label = "Tomorrow";
+    big = "Tomorrow, " + fmtTime(first);
+    sub = EVENT.venue + ". Pack your bag tonight.";
+    next = "Check the “Bring these” list below.";
+  } else if (dayDiff === 0 && minsNow < first){
+    label = "Today";
+    big = "Today — be there by " + fmtTime(first);
+    var togo = first - minsNow;
+    sub = togo > 90
+      ? "That's in " + Math.floor(togo / 60) + "h " + (togo % 60) + "m. Leave with time to spare."
+      : "That's in " + togo + " minutes. Time to move.";
+    next = EVENT.venue + " · " + EVENT.address;
+  } else if (dayDiff === 0 && minsNow <= last + 30){
+    // find current step
+    var idx = 0, i;
+    for (i = 0; i < s.length; i++) if (minsNow >= hhmmToMins(s[i].t)) idx = i;
+    var cur = s[idx], nxt = s[idx + 1];
+    var starMins = null;
+    for (i = 0; i < s.length; i++) if (s[i].star) starMins = hhmmToMins(s[i].t);
+
+    // loud window either side of the group photo
+    if (starMins !== null && minsNow >= starMins - 5 && minsNow < starMins + 12){
+      alert = true;
+      label = "Do this now";
+      var away = starMins - minsNow;
+      big = away > 0 ? "Group photo in " + away + " min" : "Group photo — now";
+      sub = "Everyone together at the entrance, with the banner. Nobody drives off yet.";
+      next = "Once cars leave we cannot retake this one.";
+    } else {
+      big = cur.d;
+      sub = cur.note || "";
+      next = nxt ? "Next · " + fmtTime(hhmmToMins(nxt.t)) + " " + nxt.d : "That's a wrap. Thank you.";
+    }
+  } else if (dayDiff === 0){
+    label = "All done";
+    big = "Thank you 🧡";
+    sub = "That's the round finished. Head home safe.";
+    next = "One last thing — send your photos to the group.";
+  } else {
+    label = "Afterwards";
+    big = "Thank you 🧡";
+    sub = "Hearts on Wheels is done.";
+    next = "If you still have photos on your phone, send them to the group.";
+  }
+
+  $("nowLabel").textContent = label;
+  $("nowBig").textContent = big;
+  $("nowSub").textContent = sub;
+  $("nowNext").textContent = next;
+  $("now").className = alert ? "now alert" : "now";
+
+  renderRun(minsNow, dayDiff === 0);
+}
+
+makeList("photoList", EVENT.photos, "how_photos", "photoPct", "photoBar");
+makeList("bringList", EVENT.bring,  "how_bring",  "bringPct", "bringBar");
+renderNow();
+setInterval(renderNow, 30000);
+</script>
+</body>
+</html>
