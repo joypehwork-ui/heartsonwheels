@@ -33,7 +33,6 @@
   }
   .wrap{max-width:620px; margin:0 auto; padding-inline:18px}
 
-  /* header */
   header{padding-block:26px 4px; text-align:center}
   .kicker{color:var(--accent); font-weight:800; letter-spacing:.14em; font-size:12px; text-transform:uppercase; margin:0 0 6px}
   h1{font-size:clamp(32px,9vw,46px); margin:0; letter-spacing:-.025em; line-height:1.05}
@@ -44,7 +43,6 @@
     padding:9px 13px; font-size:14px; margin:14px 0 0; text-align:center; font-weight:600;
   }
 
-  /* NOW card */
   .now{
     background:var(--accent); color:var(--accent-ink); border-radius:18px;
     padding:24px 20px; margin:18px 0 12px; box-shadow:var(--shadow);
@@ -55,13 +53,8 @@
   .now-label{font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; opacity:.85; margin:0 0 8px}
   .now-big{font-size:clamp(25px,6.5vw,34px); font-weight:800; line-height:1.15; margin:0; letter-spacing:-.02em}
   .now-sub{margin:10px 0 0; font-size:16px; opacity:.92}
-  .now-next{
-    margin:16px 0 0; padding-top:13px; border-top:1px solid rgba(255,255,255,.28);
-    font-size:14px; opacity:.9;
-  }
-  :root[data-theme="dark"] .now-next, :root:not([data-theme="light"]) .now-next{border-top-color:rgba(0,0,0,.2)}
+  .now-next{margin:16px 0 0; padding-top:13px; border-top:1px solid rgba(255,255,255,.28); font-size:14px; opacity:.9}
 
-  /* buttons */
   .acts{display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:26px}
   .acts a{
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
@@ -73,19 +66,17 @@
   .acts a:active{transform:translateY(1px)}
   .acts .ic{font-size:21px; line-height:1}
 
-  /* sections */
   section{
     background:var(--card); border:1px solid var(--line); border-radius:16px;
     padding:20px; margin-bottom:14px; box-shadow:var(--shadow);
   }
-  h2{font-size:13px; margin:0 0 14px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:800}
+  h2{font-size:13px; margin:0 0 14px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:800; display:flex; justify-content:space-between; align-items:center; gap:10px}
   p{margin:0 0 10px}
   p:last-child{margin-bottom:0}
   .big{font-size:20px; font-weight:700; letter-spacing:-.01em}
   .sub{color:var(--muted); font-size:15px}
   a{color:var(--accent)}
 
-  /* run of show */
   .run{list-style:none; margin:0; padding:0}
   .run li{display:flex; gap:14px; padding:11px 0; border-top:1px solid var(--line); align-items:baseline}
   .run li:first-child{border-top:0}
@@ -99,26 +90,19 @@
   .run li.cur{background:var(--soft); margin-inline:-20px; padding-inline:20px; border-radius:10px}
   .run li.cur .t{color:var(--accent)}
 
-  /* checklists */
   .chk{list-style:none; margin:0; padding:0}
   .chk li{border-top:1px solid var(--line)}
   .chk li:first-child{border-top:0}
   .chk label{display:flex; gap:12px; align-items:flex-start; padding:12px 0; cursor:pointer}
-  .chk input{
-    flex:0 0 auto; width:23px; height:23px; margin:0; accent-color:var(--accent); cursor:pointer;
-  }
+  .chk input{flex:0 0 auto; width:23px; height:23px; margin:0; accent-color:var(--accent); cursor:pointer}
   .chk span{flex:1 1 auto}
   .chk .why{display:block; font-size:13.5px; color:var(--muted); margin-top:2px}
   .chk input:checked + span{opacity:.5; text-decoration:line-through}
   .chk input:checked + span .why{text-decoration:none}
-  .prog{
-    display:flex; align-items:center; gap:10px; margin-bottom:12px;
-    font-size:14px; color:var(--muted); font-weight:600;
-  }
+  .prog{display:flex; align-items:center; gap:10px; margin-bottom:12px; font-size:14px; color:var(--muted); font-weight:600}
   .bar{flex:1 1 auto; height:7px; background:var(--line); border-radius:99px; overflow:hidden}
   .bar i{display:block; height:100%; width:0; background:var(--accent); border-radius:99px; transition:width .25s}
 
-  /* dos and donts */
   .rules{list-style:none; margin:0; padding:0}
   .rules li{display:flex; gap:11px; padding:9px 0; border-top:1px solid var(--line); align-items:flex-start}
   .rules li:first-child{border-top:0}
@@ -126,32 +110,81 @@
   .rules .yes{color:var(--good)}
   .rules .no{color:var(--accent)}
 
-  .flag{
-    background:var(--soft); border-radius:11px; padding:13px 15px; margin-top:14px; font-size:15px;
-  }
+  .flag{background:var(--soft); border-radius:11px; padding:13px 15px; margin-top:14px; font-size:15px}
   .flag b{display:block; margin-bottom:3px}
 
-  /* a button whose destination doesn't exist yet */
+  .ph{background:var(--warnbg); color:var(--warn); border-radius:5px; padding:1px 7px; font-weight:800; font-size:.92em; white-space:nowrap}
+
   .todo{opacity:.5; cursor:not-allowed}
   .acts a.todo{border-style:dashed}
   a.wa.todo{background:var(--muted)}
 
-  .ph{
-    background:var(--warnbg); color:var(--warn); border-radius:5px;
-    padding:1px 7px; font-weight:800; font-size:.92em; white-space:nowrap;
-  }
-
-  .wa{
-    display:block; background:var(--good); color:#fff; text-align:center;
-    padding:15px; border-radius:12px; font-weight:750; text-decoration:none; margin-top:14px; font-size:16px;
-  }
-  :root[data-theme="dark"] .wa, :root:not([data-theme="light"]) .wa{color:#04140c}
+  .wa{display:block; background:var(--good); color:#fff; text-align:center; padding:15px; border-radius:12px; font-weight:750; text-decoration:none; margin-top:14px; font-size:16px}
 
   .contact{display:flex; justify-content:space-between; gap:12px; padding:11px 0; border-top:1px solid var(--line); flex-wrap:wrap}
   .contact:first-of-type{border-top:0}
-  .contact b{font-weight:700}
 
   footer{color:var(--muted); font-size:13px; text-align:center; margin-top:26px; line-height:1.65}
+
+  /* ---------- forms, buttons, CRUD ---------- */
+  input[type=text],input[type=time],input[type=date],textarea,select{
+    width:100%; padding:10px 12px; font:inherit; font-size:16px;
+    border:1px solid var(--line); border-radius:9px; background:var(--bg); color:var(--ink);
+  }
+  textarea{min-height:62px; resize:vertical}
+  input:focus,textarea:focus,select:focus{outline:2px solid var(--accent); outline-offset:1px}
+  .fl{margin-bottom:11px}
+  .fl > label{display:block; font-size:13px; font-weight:700; margin-bottom:4px; color:var(--muted)}
+  .grid2{display:grid; grid-template-columns:88px 1fr; gap:9px}
+
+  button{font:inherit; cursor:pointer; border-radius:9px; border:1px solid var(--line); background:var(--card); color:var(--ink); padding:9px 14px; font-weight:650}
+  button:active{transform:translateY(1px)}
+  button.primary{background:var(--accent); color:var(--accent-ink); border-color:transparent}
+  button.danger{color:var(--accent); border-color:var(--line); background:transparent}
+  button.tiny{padding:5px 10px; font-size:13px; font-weight:600}
+  button.wide{width:100%; padding:13px; font-size:16px}
+  .btnrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+  .spacer{flex:1 1 auto}
+
+  .manage{background:none; border:1px solid var(--line); color:var(--muted); font-size:12px; padding:5px 11px; letter-spacing:0; text-transform:none; font-weight:600}
+
+  /* editable rows */
+  .row{border:1px solid var(--line); border-radius:12px; padding:12px; margin-bottom:9px; background:var(--bg)}
+  .row-h{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+  .row-h b{flex:1 1 auto; min-width:0}
+  .muted-note{font-size:13px; color:var(--muted); margin-top:8px}
+
+  /* delivery log */
+  .log{list-style:none; margin:0; padding:0}
+  .log li{border-top:1px solid var(--line); padding:12px 0; display:flex; gap:11px; align-items:flex-start}
+  .log li:first-child{border-top:0}
+  .tag{
+    flex:0 0 auto; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+    padding:4px 9px; border-radius:99px; margin-top:2px; white-space:nowrap;
+  }
+  .tag.ok{background:var(--good); color:#fff}
+  .tag.no{background:var(--warnbg); color:var(--warn)}
+  .tag.iss{background:var(--accent); color:var(--accent-ink)}
+  .log .body{flex:1 1 auto; min-width:0}
+  .log .unit{font-weight:700}
+  .log .note{font-size:14px; color:var(--muted); margin-top:2px; overflow-wrap:anywhere}
+  .log .when{font-size:12px; color:var(--muted); margin-top:3px}
+  .tally{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:13px}
+  .tally span{background:var(--bg); border:1px solid var(--line); border-radius:99px; padding:5px 12px; font-size:13px; font-weight:650}
+  .empty{color:var(--muted); font-size:15px; text-align:center; padding:16px 0}
+
+  .savebar{
+    position:sticky; bottom:0; background:var(--card); border-top:1px solid var(--line);
+    margin:14px -20px -20px; padding:13px 20px; border-radius:0 0 16px 16px;
+    display:flex; gap:9px; align-items:center; flex-wrap:wrap;
+  }
+  .savemsg{font-size:13px; color:var(--muted); flex:1 1 100%}
+
+  .mode{
+    font-size:12px; color:var(--muted); text-align:center; margin-top:10px;
+    border:1px dashed var(--line); border-radius:9px; padding:8px 12px;
+  }
+  .hide{display:none !important}
 </style>
 </head>
 <body>
@@ -159,7 +192,7 @@
 
 <header>
   <p class="kicker">Department Volunteering</p>
-  <h1>Hearts on Wheels</h1>
+  <h1 id="title">Hearts on Wheels</h1>
   <p class="when" id="when"></p>
   <div class="prov" id="prov">⚠ Timings still to be confirmed with TOUCH</div>
 </header>
@@ -196,6 +229,46 @@
   <ul class="run" id="run"></ul>
 </section>
 
+<section id="teamsSection">
+  <h2>Your team</h2>
+  <p class="sub" style="margin-bottom:12px">Each car runs one driver and two to three runners.
+    Driver parks and navigates; runners take the meals to the door.</p>
+  <div id="teamsView"></div>
+</section>
+
+<!-- ============ DELIVERY LOG — full CRUD, saved on this phone ============ -->
+<section>
+  <h2>My delivery log</h2>
+  <div class="tally" id="tally"></div>
+
+  <div class="fl">
+    <label for="logUnit">Block and unit</label>
+    <input type="text" id="logUnit" placeholder="e.g. Blk 231 #05-118" autocomplete="off">
+  </div>
+  <div class="fl">
+    <label for="logStatus">How did it go?</label>
+    <select id="logStatus">
+      <option value="ok">Delivered</option>
+      <option value="no">No answer</option>
+      <option value="iss">Problem — needs follow up</option>
+    </select>
+  </div>
+  <div class="fl">
+    <label for="logNote">Note (optional)</label>
+    <textarea id="logNote" placeholder="Anything TOUCH should know"></textarea>
+  </div>
+  <div class="btnrow">
+    <button class="primary wide" id="logAdd">Add to log</button>
+  </div>
+  <p class="muted-note" id="logEditing"></p>
+
+  <ul class="log" id="logList"></ul>
+
+  <div class="btnrow" id="logTools"></div>
+  <p class="muted-note">Saved on this phone only. Nobody else can see your log, so
+    copy the summary and send it to the group at the end.</p>
+</section>
+
 <section>
   <h2>Photos — we must send these to the office</h2>
   <div class="prog"><span id="photoPct">0 of 3</span><span class="bar"><i id="photoBar"></i></span></div>
@@ -227,8 +300,8 @@
   </ul>
   <div class="flag">
     <b>Nobody answers?</b>
-    Knock again, call out, wait a moment. Still nothing — tell the organiser or TOUCH straight away.
-    Don't just move on. A senior not answering can be an emergency.
+    Knock again, call out, wait a moment. Still nothing — tell the organiser or TOUCH straight away,
+    and log it above. Don't just move on. A senior not answering can be an emergency.
   </div>
   <div class="flag">
     <b>Meals are labelled</b>
@@ -241,6 +314,49 @@
   <h2>Who to call</h2>
   <div class="contact"><span>Organiser</span><b id="orgLine"></b></div>
   <div class="contact"><span>TOUCH Home Care</span><b><a href="tel:68046555">6804 6555</a></b></div>
+  <div class="btnrow" style="margin-top:14px">
+    <span class="spacer"></span>
+    <button class="manage" id="manageBtn">⚙ Organiser tools</button>
+  </div>
+</section>
+
+<!-- ============ ORGANISER PANEL — CRUD over the event ============ -->
+<section id="admin" class="hide">
+  <h2>Organiser tools <button class="manage" id="adminClose">Close</button></h2>
+
+  <h3 style="font-size:14px;margin:0 0 10px">Event details</h3>
+  <div class="fl"><label for="aName">Event name</label><input type="text" id="aName"></div>
+  <div class="fl"><label for="aDate">Date</label><input type="date" id="aDate"></div>
+  <div class="fl"><label for="aVenue">Venue</label><input type="text" id="aVenue"></div>
+  <div class="fl"><label for="aAddr">Address</label><input type="text" id="aAddr"></div>
+  <div class="fl"><label for="aOrg">Organiser name</label><input type="text" id="aOrg"></div>
+  <div class="fl"><label for="aWa">WhatsApp group link</label><input type="text" id="aWa" placeholder="https://chat.whatsapp.com/..."></div>
+  <div class="fl">
+    <label><input type="checkbox" id="aProv" style="width:auto;height:auto;margin-right:8px">
+      Timings not yet confirmed with TOUCH</label>
+  </div>
+
+  <h3 style="font-size:14px;margin:22px 0 10px">Run of show</h3>
+  <div id="aSchedule"></div>
+  <button class="tiny" id="aAddStep">+ Add a step</button>
+
+  <h3 style="font-size:14px;margin:22px 0 10px">Cars and teams</h3>
+  <div class="flag" style="margin-top:0;margin-bottom:12px">
+    <b>Careful — this page is public.</b>
+    Anything you type here becomes visible to anyone with the link. Use first names only,
+    or leave it and send assignments over WhatsApp instead.
+  </div>
+  <div id="aTeams"></div>
+  <button class="tiny" id="aAddCar">+ Add a car</button>
+
+  <div class="savebar">
+    <p class="savemsg" id="saveMsg"></p>
+    <button class="primary" id="aSave">Save</button>
+    <button id="aRevert">Discard changes</button>
+    <span class="spacer"></span>
+    <button class="tiny" id="aExport">Copy config</button>
+  </div>
+  <p class="mode" id="modeNote"></p>
 </section>
 
 <footer>
@@ -250,262 +366,270 @@
 
 </div>
 
+<!-- The shared event data. The organiser panel rewrites this block when it publishes. -->
+<script id="state" type="application/json">
+{
+  "name": "Hearts on Wheels",
+  "dateISO": "2026-09-20",
+  "venue": "Hong Kah North Community Club",
+  "address": "30 Bukit Batok Street 31, Singapore 659440",
+  "provisional": true,
+  "organiserName": "Joy",
+  "organiserPhone": "",
+  "whatsappLink": "[WHATSAPP GROUP LINK]",
+  "photoDeadline": "tonight, by 10pm",
+  "schedule": [
+    { "id":"s1", "t":"15:00", "d":"Arrive and sign in",      "note":"Briefing by TOUCH staff at the CC" },
+    { "id":"s2", "t":"15:20", "d":"Sort and pack the meals", "note":"Check the labels as you pack" },
+    { "id":"s3", "t":"15:40", "d":"GROUP PHOTO",             "note":"Everyone together, with the banner. Do this before anyone drives off.", "star":true },
+    { "id":"s4", "t":"15:50", "d":"Load cars and go",        "note":"Driver plus 2-3 runners per car" },
+    { "id":"s5", "t":"16:00", "d":"Deliveries",              "note":"Your zone is in the WhatsApp group" },
+    { "id":"s6", "t":"17:45", "d":"Last drop",               "note":"No need to return to the CC" },
+    { "id":"s7", "t":"18:00", "d":"Done - head home",        "note":"Send your photos before you forget" }
+  ],
+  "teams": [],
+  "photos": [
+    { "id":"p1", "txt":"Group photo with the department banner", "why":"The one we cannot retake. Before cars leave." },
+    { "id":"p2", "txt":"Packing the meals",                      "why":"Candid shots at the CC" },
+    { "id":"p3", "txt":"Loading the cars",                       "why":"Or a team shot on the route" }
+  ],
+  "bring": [
+    { "id":"b1", "txt":"Covered shoes",  "why":"Lots of stairs and corridors. No slippers." },
+    { "id":"b2", "txt":"Water bottle",   "why":"It gets warm out there" },
+    { "id":"b3", "txt":"Umbrella",       "why":"September. Assume rain." },
+    { "id":"b4", "txt":"Charged phone",  "why":"For photos and for reaching your team" },
+    { "id":"b5", "txt":"Hand sanitiser", "why":"" },
+    { "id":"b6", "txt":"Small towel",    "why":"" }
+  ]
+}
+</script>
+
 <script>
 "use strict";
 
-/* =====================================================================
-   EDIT THIS BLOCK — everything on the page comes from here.
-   ===================================================================== */
-var EVENT = {
-  name:     "Hearts on Wheels",
-  dateISO:  "2026-09-20",              // Sunday
-  dateText: "Sunday, 20 September 2026",
-  venue:    "Hong Kah North Community Club",
-  address:  "30 Bukit Batok Street 31, Singapore 659440",
-
-  provisional: true,                   // set false once TOUCH confirms the timings
-
-  organiserName:  "Joy",
-
-  /* Deliberately left blank. This page is public and search-indexable, so a
-     mobile number here would be scraped and would outlive the event in caches.
-     Joy's number goes in the WhatsApp group message instead, where only
-     colleagues see it. Leave this empty and the Call button routes to the
-     group chat. Put digits here only if you accept it becoming public. */
-  organiserPhone: "",
-
-  // TODO: replace with the real invite link once the group exists.
-  whatsappLink:   "[WHATSAPP GROUP LINK]",
-
-  photoDeadline:  "tonight, by 10pm",
-
-  // Run of show. Times are 24h "HH:MM". star:true = the unmissable one.
-  schedule: [
-    { t:"15:00", d:"Arrive and sign in",      note:"Briefing by TOUCH staff at the CC" },
-    { t:"15:20", d:"Sort and pack the meals", note:"Check the labels as you pack" },
-    { t:"15:40", d:"GROUP PHOTO",             note:"Everyone together, with the banner. Do this before anyone drives off.", star:true },
-    { t:"15:50", d:"Load cars and go",        note:"Driver plus 2–3 runners per car" },
-    { t:"16:00", d:"Deliveries",              note:"Your zone is in the WhatsApp group" },
-    { t:"17:45", d:"Last drop",               note:"No need to return to the CC" },
-    { t:"18:00", d:"Done — head home",        note:"Send your photos before you forget" }
-  ],
-
-  photos: [
-    { k:"grp",  txt:"Group photo with the department banner", why:"The one we cannot retake. Before cars leave." },
-    { k:"pack", txt:"Packing the meals",                      why:"Candid shots at the CC" },
-    { k:"load", txt:"Loading the cars",                       why:"Or a team shot on the route" }
-  ],
-
-  bring: [
-    { k:"shoes", txt:"Covered shoes",   why:"Lots of stairs and corridors. No slippers." },
-    { k:"water", txt:"Water bottle",    why:"It gets warm out there" },
-    { k:"brolly",txt:"Umbrella",        why:"September. Assume rain." },
-    { k:"phone", txt:"Charged phone",   why:"For photos and for reaching your team" },
-    { k:"sani",  txt:"Hand sanitiser",  why:"" },
-    { k:"towel", txt:"Small towel",     why:"" }
-  ]
-};
-
-/* ---------------------------------------------------------------------
-   TEAMS — intentionally left out of this page.
-   Car assignments contain colleagues' names, so they go out over
-   WhatsApp instead, not on a public web page.
-
-   If you ever do want them here, add them below AND remember that
-   re-publishing puts those names on the public internet.
-
-   var TEAMS = [
-     { car:"Car 1", driver:"...", runners:["...","..."] },
-   ];
-   --------------------------------------------------------------------- */
-
-/* ===================================================================== */
+/* Capture the page exactly as authored, before anything renders.
+   Publishing rebuilds this document with fresh data swapped into the
+   state block — never a serialization of the mutated live DOM. */
+var PRISTINE = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
 
 var $ = function(id){ return document.getElementById(id); };
+var LOG_KEY = "how_log", LOCAL_STATE_KEY = "how_state";
 
-/* Clock. Override with ?now=2026-09-20T15:38 to preview any moment. */
+/* ---------- state ---------- */
+var PUBLISHED = JSON.parse($("state").textContent);   // what everyone sees
+var state     = null;                                  // what this device shows
+var draft     = null;                                  // admin panel working copy
+var artifact  = null;                                  // set if we can publish
+var log       = [];
+var editingId = null;
+
+function clone(o){ return JSON.parse(JSON.stringify(o)); }
+function uid(p){ return p + Math.random().toString(36).slice(2,8) + Date.now().toString(36).slice(-3); }
+
+function loadState(){
+  var local = null;
+  try { local = JSON.parse(localStorage.getItem(LOCAL_STATE_KEY) || "null"); } catch(e){}
+  /* Local edits only apply where we cannot publish for everyone. If the
+     published data is newer than the local copy, the published data wins. */
+  if (local && local._savedAt && local._base === JSON.stringify(PUBLISHED)) return local;
+  return clone(PUBLISHED);
+}
+
+function loadLog(){
+  try { log = JSON.parse(localStorage.getItem(LOG_KEY) || "[]") || []; } catch(e){ log = []; }
+  if (!Array.isArray(log)) log = [];
+}
+function saveLog(){
+  try { localStorage.setItem(LOG_KEY, JSON.stringify(log)); } catch(e){}
+}
+
+/* ---------- helpers ---------- */
 function nowDate(){
   var q = (location.search.match(/[?&]now=([^&]+)/) || [])[1];
-  if (q){
-    var d = new Date(decodeURIComponent(q).replace(" ", "T"));
-    if (!isNaN(d.getTime())) return d;
-  }
+  if (q){ var d = new Date(decodeURIComponent(q).replace(" ","T")); if (!isNaN(d.getTime())) return d; }
   return new Date();
 }
-
-function hhmmToMins(s){ var p = s.split(":"); return (+p[0]) * 60 + (+p[1]); }
-
-function fmtTime(mins){
-  var h = Math.floor(mins / 60), m = mins % 60;
-  var ap = h < 12 ? "am" : "pm", h12 = h % 12; if (h12 === 0) h12 = 12;
-  return h12 + "." + (m < 10 ? "0" : "") + m + ap;
+function hhmm(s){ var p = String(s||"0:0").split(":"); return (+p[0])*60 + (+p[1]); }
+function fmtTime(m){
+  var h = Math.floor(m/60), mm = m%60, ap = h<12?"am":"pm", h12 = h%12; if(h12===0) h12=12;
+  return h12 + "." + (mm<10?"0":"") + mm + ap;
 }
+function fmtDate(iso){
+  var d = new Date(iso + "T00:00:00");
+  if (isNaN(d.getTime())) return iso;
+  var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  var mons = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  return days[d.getDay()] + ", " + d.getDate() + " " + mons[d.getMonth()] + " " + d.getFullYear();
+}
+function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function isPh(v){ return /^\[.*\]$/.test(String(v||"").trim()); }
+function showVal(v){ return isPh(v) ? '<span class="ph">' + esc(v) + '</span>' : esc(v); }
+function sortedSchedule(){ return state.schedule.slice().sort(function(a,b){ return hhmm(a.t) - hhmm(b.t); }); }
 
-function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+/* ================= RENDER THE PAGE ================= */
+function renderStatic(){
+  var s = sortedSchedule();
+  var first = s.length ? hhmm(s[0].t) : 900;
+  var last  = s.length ? hhmm(s[s.length-1].t) : 1080;
 
-/* A placeholder is anything still in [SQUARE BRACKETS]. */
-function isPlaceholder(v){ return /^\[.*\]$/.test(String(v || "").trim()); }
-function showVal(v){ return isPlaceholder(v) ? '<span class="ph">' + esc(v) + '</span>' : esc(v); }
+  $("title").textContent = state.name;
+  $("when").textContent  = fmtDate(state.dateISO) + " · " + fmtTime(first) + " – " + fmtTime(last);
+  $("prov").className = state.provisional ? "prov" : "prov hide";
+  $("venue").textContent = state.venue;
+  $("address").textContent = state.address;
+  $("datetime").textContent = fmtDate(state.dateISO) + ", from " + fmtTime(first);
+  $("photoDue").textContent = "Please send them " + state.photoDeadline + ".";
 
-/* ---- static bits ---- */
-(function fill(){
-  $("when").textContent = EVENT.dateText + " · " +
-    fmtTime(hhmmToMins(EVENT.schedule[0].t)) + " – " +
-    fmtTime(hhmmToMins(EVENT.schedule[EVENT.schedule.length - 1].t));
-
-  if (!EVENT.provisional) $("prov").hidden = true;
-
-  $("venue").textContent = EVENT.venue;
-  $("address").textContent = EVENT.address;
-  $("datetime").textContent = EVENT.dateText + ", from " + fmtTime(hhmmToMins(EVENT.schedule[0].t));
-  $("photoDue").textContent = "Please send them " + EVENT.photoDeadline + ".";
-
-  /* If a number is set, offer tap-to-call. If not, point people at the group
-     chat — Joy's number lives there, not on a public page. */
-  var tel = String(EVENT.organiserPhone || "").replace(/[^0-9+]/g, "");
-  var hasTel = tel && !isPlaceholder(EVENT.organiserPhone);
-
+  var tel = String(state.organiserPhone||"").replace(/[^0-9+]/g,"");
+  var hasTel = tel && !isPh(state.organiserPhone);
   $("orgLine").innerHTML = hasTel
-    ? showVal(EVENT.organiserName) + " · " + showVal(EVENT.organiserPhone)
-    : showVal(EVENT.organiserName) + ' · <span class="sub">number is in the WhatsApp group</span>';
+    ? showVal(state.organiserName) + " · " + showVal(state.organiserPhone)
+    : showVal(state.organiserName) + ' · <span class="sub">number is in the WhatsApp group</span>';
 
-  $("btnCall").href = hasTel ? "tel:" + tel : (isPlaceholder(EVENT.whatsappLink) ? "#" : EVENT.whatsappLink);
+  $("btnMap").href = "https://www.google.com/maps/search/?api=1&query=" +
+                     encodeURIComponent(state.venue + ", " + state.address);
+
+  var waReady = state.whatsappLink && !isPh(state.whatsappLink);
+  $("btnWa").href  = waReady ? state.whatsappLink : "#";
+  $("btnWa2").href = waReady ? state.whatsappLink : "#";
+  $("btnCall").href = hasTel ? "tel:" + tel : (waReady ? state.whatsappLink : "#");
   $("btnCall").innerHTML = hasTel
-    ? '<span class="ic">📞</span>Call ' + esc(EVENT.organiserName)
+    ? '<span class="ic">📞</span>Call ' + esc(state.organiserName)
     : '<span class="ic">💬</span>Message the group';
 
-  var maps = "https://www.google.com/maps/search/?api=1&query=" +
-             encodeURIComponent(EVENT.venue + ", " + EVENT.address);
-  $("btnMap").href = maps;
-
-  /* Until the group exists, don't hand people a button that silently does
-     nothing — say so on the button itself. */
-  var waReady = !isPlaceholder(EVENT.whatsappLink) && EVENT.whatsappLink;
-  $("btnWa").href  = waReady ? EVENT.whatsappLink : "#";
-  $("btnWa2").href = waReady ? EVENT.whatsappLink : "#";
-  if (!waReady){
+  if (waReady){
+    $("btnWa").className = "";
+    $("btnWa").innerHTML = '<span class="ic">📸</span>Send photos';
+    $("btnWa2").className = "wa";
+    $("btnWa2").textContent = "📸 Send photos to the group";
+    $("btnCall").className = "";
+  } else {
     $("btnWa").className = "todo";
     $("btnWa").innerHTML = '<span class="ic">📸</span>Photo link<br>coming soon';
     $("btnWa2").className = "wa todo";
     $("btnWa2").textContent = "📸 Group chat link coming soon";
-    $("btnCall").className = "todo";
+    if (!hasTel) $("btnCall").className = "todo";
   }
-})();
 
-/* ---- run of show ---- */
+  renderTeams();
+  makeList("photoList", state.photos, "how_photos", "photoPct", "photoBar");
+  makeList("bringList", state.bring,  "how_bring",  "bringPct", "bringBar");
+}
+
+function renderTeams(){
+  var t = state.teams || [];
+  if (!t.length){
+    $("teamsView").innerHTML = '<p class="sub">Car assignments go out in the WhatsApp group — ' +
+      'they have names in them, so they stay off this public page.</p>';
+    return;
+  }
+  var out = "", i;
+  for (i = 0; i < t.length; i++){
+    out += '<div class="row"><div class="row-h"><b>' + esc(t[i].car) + '</b></div>' +
+           '<div class="sub">Driver: ' + esc(t[i].driver || "—") + '</div>' +
+           '<div class="sub">Runners: ' + esc((t[i].runners || "") || "—") + '</div></div>';
+  }
+  $("teamsView").innerHTML = out;
+}
+
 function renderRun(minsNow, isToday){
-  var out = "", s = EVENT.schedule, i;
+  var s = sortedSchedule(), out = "", i;
   for (i = 0; i < s.length; i++){
-    var start = hhmmToMins(s[i].t);
-    var end = (i + 1 < s.length) ? hhmmToMins(s[i+1].t) : start + 30;
+    var start = hhmm(s[i].t);
+    var end = (i+1 < s.length) ? hhmm(s[i+1].t) : start + 30;
     var cls = [];
     if (s[i].star) cls.push("star");
     if (isToday){
       if (minsNow >= end) cls.push("done");
       else if (minsNow >= start) cls.push("cur");
     }
-    out += '<li class="' + cls.join(" ") + '">' +
-             '<span class="t">' + fmtTime(start) + '</span>' +
-             '<span class="d">' + esc(s[i].d) +
-               (s[i].note ? '<span class="note">' + esc(s[i].note) + '</span>' : '') +
-             '</span></li>';
+    out += '<li class="' + cls.join(" ") + '"><span class="t">' + fmtTime(start) + '</span>' +
+           '<span class="d">' + esc(s[i].d) +
+           (s[i].note ? '<span class="note">' + esc(s[i].note) + '</span>' : '') +
+           '</span></li>';
   }
   $("run").innerHTML = out;
 }
 
-/* ---- checklists, saved locally ---- */
-function makeList(elId, items, storeKey, pctId, barId){
+function makeList(elId, items, key, pctId, barId){
   var saved = {};
-  try { saved = JSON.parse(localStorage.getItem(storeKey) || "{}") || {}; } catch(e){}
-
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}") || {}; } catch(e){}
   var out = "", i;
   for (i = 0; i < items.length; i++){
     var it = items[i];
-    out += '<li><label>' +
-             '<input type="checkbox" data-k="' + it.k + '"' + (saved[it.k] ? " checked" : "") + '>' +
-             '<span>' + esc(it.txt) +
-               (it.why ? '<span class="why">' + esc(it.why) + '</span>' : '') +
-             '</span></label></li>';
+    out += '<li><label><input type="checkbox" data-k="' + esc(it.id) + '"' +
+           (saved[it.id] ? " checked" : "") + '><span>' + esc(it.txt) +
+           (it.why ? '<span class="why">' + esc(it.why) + '</span>' : '') +
+           '</span></label></li>';
   }
-  $(elId).innerHTML = out;
-
+  var el = $(elId);
+  el.innerHTML = out;
   function sync(){
-    var boxes = $(elId).querySelectorAll("input"), n = 0, j;
-    for (j = 0; j < boxes.length; j++) if (boxes[j].checked) n++;
-    $(pctId).textContent = n + " of " + boxes.length;
-    $(barId).style.width = (boxes.length ? (n / boxes.length * 100) : 0) + "%";
+    var b = el.querySelectorAll("input"), n = 0, j;
+    for (j = 0; j < b.length; j++) if (b[j].checked) n++;
+    $(pctId).textContent = n + " of " + b.length;
+    $(barId).style.width = (b.length ? n/b.length*100 : 0) + "%";
   }
-
-  $(elId).addEventListener("change", function(e){
-    var k = e.target.getAttribute("data-k");
-    if (!k) return;
-    saved[k] = e.target.checked;
-    try { localStorage.setItem(storeKey, JSON.stringify(saved)); } catch(err){}
-    sync();
-  });
+  if (!el._wired){
+    el._wired = true;
+    el.addEventListener("change", function(e){
+      var k = e.target.getAttribute("data-k"); if (!k) return;
+      var cur = {}; try { cur = JSON.parse(localStorage.getItem(key) || "{}") || {}; } catch(err){}
+      cur[k] = e.target.checked;
+      try { localStorage.setItem(key, JSON.stringify(cur)); } catch(err){}
+      sync();
+    });
+  }
   sync();
 }
 
-/* ---- the NOW card ---- */
 function renderNow(){
   var d = nowDate();
-  var eventDay = new Date(EVENT.dateISO + "T00:00:00");
+  var eventDay = new Date(state.dateISO + "T00:00:00");
   var today = new Date(d.getFullYear(), d.getMonth(), d.getDate());
   var dayDiff = Math.round((eventDay - today) / 86400000);
-  var minsNow = d.getHours() * 60 + d.getMinutes();
-  var s = EVENT.schedule;
-  var first = hhmmToMins(s[0].t), last = hhmmToMins(s[s.length - 1].t);
-
-  var label = "Right now", big = "", sub = "", next = "", alert = false;
+  var minsNow = d.getHours()*60 + d.getMinutes();
+  var s = sortedSchedule();
+  if (!s.length){ $("nowBig").textContent = "No schedule set yet"; return; }
+  var first = hhmm(s[0].t), last = hhmm(s[s.length-1].t);
+  var label = "Right now", big = "", sub = "", next = "", alert = false, i;
 
   if (dayDiff > 1){
-    label = "Coming up";
-    big = dayDiff + " days to go";
-    sub = "Sunday afternoon, " + EVENT.venue + ".";
+    label = "Coming up"; big = dayDiff + " days to go";
+    sub = "Sunday afternoon, " + state.venue + ".";
     next = "Tick off the “Bring these” list below so you're not scrambling on the day.";
   } else if (dayDiff === 1){
-    label = "Tomorrow";
-    big = "Tomorrow, " + fmtTime(first);
-    sub = EVENT.venue + ". Pack your bag tonight.";
+    label = "Tomorrow"; big = "Tomorrow, " + fmtTime(first);
+    sub = state.venue + ". Pack your bag tonight.";
     next = "Check the “Bring these” list below.";
   } else if (dayDiff === 0 && minsNow < first){
-    label = "Today";
-    big = "Today — be there by " + fmtTime(first);
+    label = "Today"; big = "Today — be there by " + fmtTime(first);
     var togo = first - minsNow;
-    sub = togo > 90
-      ? "That's in " + Math.floor(togo / 60) + "h " + (togo % 60) + "m. Leave with time to spare."
-      : "That's in " + togo + " minutes. Time to move.";
-    next = EVENT.venue + " · " + EVENT.address;
+    sub = togo > 90 ? "That's in " + Math.floor(togo/60) + "h " + (togo%60) + "m. Leave with time to spare."
+                    : "That's in " + togo + " minutes. Time to move.";
+    next = state.venue + " · " + state.address;
   } else if (dayDiff === 0 && minsNow <= last + 30){
-    // find current step
-    var idx = 0, i;
-    for (i = 0; i < s.length; i++) if (minsNow >= hhmmToMins(s[i].t)) idx = i;
-    var cur = s[idx], nxt = s[idx + 1];
-    var starMins = null;
-    for (i = 0; i < s.length; i++) if (s[i].star) starMins = hhmmToMins(s[i].t);
-
-    // loud window either side of the group photo
+    var idx = 0;
+    for (i = 0; i < s.length; i++) if (minsNow >= hhmm(s[i].t)) idx = i;
+    var cur = s[idx], nxt = s[idx+1], starMins = null;
+    for (i = 0; i < s.length; i++) if (s[i].star) starMins = hhmm(s[i].t);
     if (starMins !== null && minsNow >= starMins - 5 && minsNow < starMins + 12){
-      alert = true;
-      label = "Do this now";
+      alert = true; label = "Do this now";
       var away = starMins - minsNow;
       big = away > 0 ? "Group photo in " + away + " min" : "Group photo — now";
       sub = "Everyone together at the entrance, with the banner. Nobody drives off yet.";
       next = "Once cars leave we cannot retake this one.";
     } else {
-      big = cur.d;
-      sub = cur.note || "";
-      next = nxt ? "Next · " + fmtTime(hhmmToMins(nxt.t)) + " " + nxt.d : "That's a wrap. Thank you.";
+      big = cur.d; sub = cur.note || "";
+      next = nxt ? "Next · " + fmtTime(hhmm(nxt.t)) + " " + nxt.d : "That's a wrap. Thank you.";
     }
   } else if (dayDiff === 0){
-    label = "All done";
-    big = "Thank you 🧡";
+    label = "All done"; big = "Thank you 🧡";
     sub = "That's the round finished. Head home safe.";
     next = "One last thing — send your photos to the group.";
   } else {
-    label = "Afterwards";
-    big = "Thank you 🧡";
-    sub = "Hearts on Wheels is done.";
+    label = "Afterwards"; big = "Thank you 🧡";
+    sub = state.name + " is done.";
     next = "If you still have photos on your phone, send them to the group.";
   }
 
@@ -514,14 +638,322 @@ function renderNow(){
   $("nowSub").textContent = sub;
   $("nowNext").textContent = next;
   $("now").className = alert ? "now alert" : "now";
-
   renderRun(minsNow, dayDiff === 0);
 }
 
-makeList("photoList", EVENT.photos, "how_photos", "photoPct", "photoBar");
-makeList("bringList", EVENT.bring,  "how_bring",  "bringPct", "bringBar");
+/* ================= DELIVERY LOG — create, read, update, delete ================= */
+var STATUS = { ok:{cls:"ok",txt:"Delivered"}, no:{cls:"no",txt:"No answer"}, iss:{cls:"iss",txt:"Problem"} };
+
+function renderLog(){
+  var n = {ok:0,no:0,iss:0}, i;
+  for (i = 0; i < log.length; i++) if (n[log[i].status] != null) n[log[i].status]++;
+  $("tally").innerHTML =
+    '<span>🟢 ' + n.ok + ' delivered</span>' +
+    '<span>🟡 ' + n.no + ' no answer</span>' +
+    '<span>🔴 ' + n.iss + ' problem</span>' +
+    '<span>' + log.length + ' total</span>';
+
+  if (!log.length){
+    $("logList").innerHTML = '<li><p class="empty">Nothing logged yet. Add your first drop above.</p></li>';
+    $("logTools").innerHTML = "";
+    return;
+  }
+
+  var out = "";
+  for (i = log.length - 1; i >= 0; i--){
+    var e = log[i], st = STATUS[e.status] || STATUS.ok;
+    out += '<li><span class="tag ' + st.cls + '">' + st.txt + '</span>' +
+           '<div class="body"><div class="unit">' + esc(e.unit) + '</div>' +
+           (e.note ? '<div class="note">' + esc(e.note) + '</div>' : '') +
+           '<div class="when">' + esc(e.at) + '</div>' +
+           '<div class="btnrow">' +
+             '<button class="tiny" data-edit="' + esc(e.id) + '">Edit</button>' +
+             '<button class="tiny danger" data-del="' + esc(e.id) + '">Delete</button>' +
+           '</div></div></li>';
+  }
+  $("logList").innerHTML = out;
+  $("logTools").innerHTML =
+    '<button class="tiny" id="logCopy">Copy summary</button>' +
+    '<button class="tiny danger" id="logClear">Clear all</button>';
+  $("logCopy").addEventListener("click", copyLog);
+  $("logClear").addEventListener("click", function(){
+    if (!log.length) return;
+    if (confirm("Delete all " + log.length + " entries? This cannot be undone.")){
+      log = []; saveLog(); renderLog();
+    }
+  });
+}
+
+function resetLogForm(){
+  editingId = null;
+  $("logUnit").value = ""; $("logNote").value = ""; $("logStatus").value = "ok";
+  $("logAdd").textContent = "Add to log";
+  $("logEditing").textContent = "";
+}
+
+function submitLog(){
+  var unit = $("logUnit").value.trim();
+  if (!unit){ $("logUnit").focus(); return; }
+  var entry = {
+    unit: unit,
+    status: $("logStatus").value,
+    note: $("logNote").value.trim(),
+    at: nowDate().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})
+  };
+  if (editingId){
+    for (var i = 0; i < log.length; i++) if (log[i].id === editingId){
+      entry.id = editingId; entry.at = log[i].at + " (edited)"; log[i] = entry;
+    }
+  } else {
+    entry.id = uid("l"); log.push(entry);
+  }
+  saveLog(); resetLogForm(); renderLog();
+}
+
+function editLog(id){
+  for (var i = 0; i < log.length; i++) if (log[i].id === id){
+    editingId = id;
+    $("logUnit").value = log[i].unit;
+    $("logStatus").value = log[i].status;
+    $("logNote").value = log[i].note || "";
+    $("logAdd").textContent = "Save changes";
+    $("logEditing").innerHTML = 'Editing <b>' + esc(log[i].unit) + '</b> — ' +
+      '<button class="tiny" id="logCancel">cancel</button>';
+    $("logCancel").addEventListener("click", function(){ resetLogForm(); });
+    $("logUnit").focus();
+  }
+}
+
+function copyLog(){
+  var lines = [state.name + " — my delivery log", ""], i;
+  for (i = 0; i < log.length; i++){
+    var e = log[i], st = STATUS[e.status] || STATUS.ok;
+    lines.push("• " + e.unit + " — " + st.txt + (e.note ? " (" + e.note + ")" : ""));
+  }
+  var n = {ok:0,no:0,iss:0};
+  for (i = 0; i < log.length; i++) if (n[log[i].status] != null) n[log[i].status]++;
+  lines.push("", n.ok + " delivered, " + n.no + " no answer, " + n.iss + " problem.");
+  copyText(lines.join("\n"), $("logCopy"), "Copy summary");
+}
+
+function copyText(text, btn, resetLabel){
+  function done(okFlag){
+    if (!btn) return;
+    btn.textContent = okFlag ? "Copied ✓" : "Press Ctrl+C";
+    setTimeout(function(){ btn.textContent = resetLabel; }, 1800);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ fallback(); });
+  } else fallback();
+  function fallback(){
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    var okFlag = false;
+    try { okFlag = document.execCommand("copy"); } catch(e){}
+    document.body.removeChild(ta); done(okFlag);
+  }
+}
+
+$("logAdd").addEventListener("click", submitLog);
+$("logUnit").addEventListener("keydown", function(e){ if (e.key === "Enter") submitLog(); });
+$("logList").addEventListener("click", function(e){
+  var ed = e.target.getAttribute && e.target.getAttribute("data-edit");
+  var dl = e.target.getAttribute && e.target.getAttribute("data-del");
+  if (ed) editLog(ed);
+  if (dl){
+    for (var i = 0; i < log.length; i++) if (log[i].id === dl){
+      if (confirm("Delete the entry for " + log[i].unit + "?")){
+        log.splice(i,1); if (editingId === dl) resetLogForm();
+        saveLog(); renderLog();
+      }
+      return;
+    }
+  }
+});
+
+/* ================= ORGANISER PANEL — CRUD over the event ================= */
+function openAdmin(){
+  draft = clone(state);
+  fillAdmin();
+  $("admin").className = "";
+  $("admin").scrollIntoView({behavior:"smooth", block:"start"});
+}
+function closeAdmin(){ $("admin").className = "hide"; draft = null; }
+
+function fillAdmin(){
+  $("aName").value  = draft.name;
+  $("aDate").value  = draft.dateISO;
+  $("aVenue").value = draft.venue;
+  $("aAddr").value  = draft.address;
+  $("aOrg").value   = draft.organiserName;
+  $("aWa").value    = draft.whatsappLink;
+  $("aProv").checked = !!draft.provisional;
+  renderAdminSchedule();
+  renderAdminTeams();
+  $("saveMsg").textContent = "";
+}
+
+function renderAdminSchedule(){
+  var out = "", i;
+  for (i = 0; i < draft.schedule.length; i++){
+    var s = draft.schedule[i];
+    out += '<div class="row" data-si="' + i + '">' +
+      '<div class="grid2">' +
+        '<input type="time" data-f="t" value="' + esc(s.t) + '">' +
+        '<input type="text" data-f="d" value="' + esc(s.d) + '" placeholder="What happens">' +
+      '</div>' +
+      '<div class="fl" style="margin:9px 0 0"><input type="text" data-f="note" value="' + esc(s.note||"") + '" placeholder="Extra note (optional)"></div>' +
+      '<div class="btnrow">' +
+        '<label style="font-size:13px;display:flex;align-items:center;gap:6px;font-weight:600">' +
+          '<input type="checkbox" data-f="star" style="width:auto" ' + (s.star?"checked":"") + '> Highlight this</label>' +
+        '<span class="spacer"></span>' +
+        '<button class="tiny danger" data-delstep="' + i + '">Delete</button>' +
+      '</div></div>';
+  }
+  $("aSchedule").innerHTML = out || '<p class="sub">No steps yet.</p>';
+}
+
+function renderAdminTeams(){
+  var out = "", i;
+  for (i = 0; i < draft.teams.length; i++){
+    var t = draft.teams[i];
+    out += '<div class="row" data-ti="' + i + '">' +
+      '<div class="fl" style="margin:0 0 9px"><input type="text" data-g="car" value="' + esc(t.car) + '" placeholder="Car 1"></div>' +
+      '<div class="fl" style="margin:0 0 9px"><input type="text" data-g="driver" value="' + esc(t.driver||"") + '" placeholder="Driver (first name)"></div>' +
+      '<div class="fl" style="margin:0"><input type="text" data-g="runners" value="' + esc(t.runners||"") + '" placeholder="Runners, comma separated"></div>' +
+      '<div class="btnrow"><span class="spacer"></span>' +
+        '<button class="tiny danger" data-delcar="' + i + '">Delete</button></div></div>';
+  }
+  $("aTeams").innerHTML = out || '<p class="sub">No cars added. Assignments stay in WhatsApp unless you add them here.</p>';
+}
+
+function readAdmin(){
+  draft.name = $("aName").value.trim() || "Untitled event";
+  draft.dateISO = $("aDate").value || draft.dateISO;
+  draft.venue = $("aVenue").value.trim();
+  draft.address = $("aAddr").value.trim();
+  draft.organiserName = $("aOrg").value.trim();
+  draft.whatsappLink = $("aWa").value.trim();
+  draft.provisional = $("aProv").checked;
+
+  var rows = $("aSchedule").querySelectorAll(".row"), i, j;
+  for (i = 0; i < rows.length; i++){
+    var si = +rows[i].getAttribute("data-si");
+    var fs = rows[i].querySelectorAll("[data-f]");
+    for (j = 0; j < fs.length; j++){
+      var f = fs[j].getAttribute("data-f");
+      draft.schedule[si][f] = (f === "star") ? fs[j].checked : fs[j].value;
+    }
+  }
+  var trows = $("aTeams").querySelectorAll(".row");
+  for (i = 0; i < trows.length; i++){
+    var ti = +trows[i].getAttribute("data-ti");
+    var gs = trows[i].querySelectorAll("[data-g]");
+    for (j = 0; j < gs.length; j++) draft.teams[ti][gs[j].getAttribute("data-g")] = gs[j].value;
+  }
+}
+
+$("manageBtn").addEventListener("click", openAdmin);
+$("adminClose").addEventListener("click", closeAdmin);
+
+$("aAddStep").addEventListener("click", function(){
+  readAdmin();
+  draft.schedule.push({ id:uid("s"), t:"16:00", d:"New step", note:"" });
+  renderAdminSchedule();
+});
+$("aAddCar").addEventListener("click", function(){
+  readAdmin();
+  draft.teams.push({ id:uid("c"), car:"Car " + (draft.teams.length+1), driver:"", runners:"" });
+  renderAdminTeams();
+});
+$("aSchedule").addEventListener("click", function(e){
+  var d = e.target.getAttribute && e.target.getAttribute("data-delstep");
+  if (d == null) return;
+  readAdmin();
+  if (confirm("Delete “" + draft.schedule[+d].d + "” from the run of show?")){
+    draft.schedule.splice(+d,1); renderAdminSchedule();
+  }
+});
+$("aTeams").addEventListener("click", function(e){
+  var d = e.target.getAttribute && e.target.getAttribute("data-delcar");
+  if (d == null) return;
+  readAdmin();
+  if (confirm("Delete " + draft.teams[+d].car + "?")){
+    draft.teams.splice(+d,1); renderAdminTeams();
+  }
+});
+$("aRevert").addEventListener("click", function(){
+  if (confirm("Discard your changes and go back to the saved version?")){
+    draft = clone(state); fillAdmin();
+    $("saveMsg").textContent = "Changes discarded.";
+  }
+});
+$("aExport").addEventListener("click", function(){
+  readAdmin();
+  copyText(JSON.stringify(draft, null, 2), $("aExport"), "Copy config");
+});
+
+/* Rebuild the whole document with new data in the state block. */
+function buildDoc(data){
+  var json = JSON.stringify(data, null, 2);
+  return PRISTINE.replace(
+    /(<script id="state" type="application\/json">)[\s\S]*?(<\/script>)/,
+    function(){ return '<script id="state" type="application/json">\n' + json + '\n<\/script>'; }
+  );
+}
+
+$("aSave").addEventListener("click", function(){
+  readAdmin();
+  var data = clone(draft);
+  state = clone(draft);
+  renderStatic(); renderNow();
+
+  if (artifact){
+    $("saveMsg").textContent = "Publishing to everyone…";
+    artifact.publish(buildDoc(data)).then(function(){
+      $("saveMsg").textContent = "Published. Everyone with the link sees this now.";
+    }, function(err){
+      var code = (err && err.code) || "error";
+      $("saveMsg").textContent = (code === "conflict")
+        ? "Someone else saved first — this page will reload to their version."
+        : "Could not publish (" + code + "). Saved on this device instead.";
+      saveLocal(data);
+    });
+  } else {
+    saveLocal(data);
+    $("saveMsg").textContent = "Saved on this device. Use “Copy config” to publish it for everyone.";
+  }
+});
+
+function saveLocal(data){
+  data._savedAt = Date.now();
+  data._base = JSON.stringify(PUBLISHED);
+  try { localStorage.setItem(LOCAL_STATE_KEY, JSON.stringify(data)); } catch(e){}
+}
+
+/* ================= BOOT ================= */
+state = loadState();
+loadLog();
+renderStatic();
 renderNow();
+renderLog();
+resetLogForm();
 setInterval(renderNow, 30000);
+
+$("modeNote").textContent =
+  "Saving here changes what everyone sees only on the hosted version. " +
+  "Elsewhere it saves to this device — use Copy config to move it across.";
+
+/* Light up live publishing if the viewer grants it. Absence is normal:
+   on GitHub Pages or a local file there is no window.claude at all. */
+if (window.claude && typeof window.claude.use === "function"){
+  window.claude.use("artifact").then(function(a){
+    if (!a) return;
+    artifact = a;
+    $("modeNote").textContent = "Live: saving publishes a new version to everyone with the link.";
+  }, function(){});
+}
 </script>
 </body>
 </html>
