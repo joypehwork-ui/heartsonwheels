@@ -5,22 +5,32 @@ Volunteer page for the department's Meals-on-Wheels session with TOUCH Home Care
 
 One file. Double-click `index.html`, or send the published link.
 
-## Before you send it
+## One thing left to do
 
-Open `index.html`, find the `EVENT` block near the top of the script, and fill in the three
-placeholders:
+Create the WhatsApp group, then paste its invite link into the `EVENT` block near the top of the
+script in `index.html`:
 
 ```js
-organiserName:  "[YOUR NAME]",
-organiserPhone: "[YOUR MOBILE]",        // digits only
-whatsappLink:   "[WHATSAPP GROUP LINK]",
+organiserName:  "Joy",
+organiserPhone: "",                     // see below — leave empty
+whatsappLink:   "[WHATSAPP GROUP LINK]",   // <- replace this
 ```
+
+Until that link is real, the two photo buttons and the Call button render dimmed and say
+"coming soon", rather than looking active and silently doing nothing.
 
 Anything still in `[SQUARE BRACKETS]` shows up highlighted in amber on the page, so you can see at
 a glance what you've missed.
 
-Joy's mobile is deliberately NOT in the file — it goes in the WhatsApp message instead.
-Leave `organiserPhone` empty and the Call button points at the group chat.
+### Why the mobile is blank on purpose
+
+This page is public and search-indexable. A mobile number on it would be scraped and would outlive
+the event in caches long after you delete it. So Joy's number goes in the WhatsApp group message,
+where only colleagues see it.
+
+With `organiserPhone` empty, the Call button points at the group chat instead of producing a dead
+`tel:` link. If you ever do want tap-to-call on the page, put the digits there and accept that they
+become public.
 
 Once TOUCH confirms the timings, set `provisional: false` and the amber warning banner disappears.
 
