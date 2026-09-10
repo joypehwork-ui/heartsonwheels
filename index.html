@@ -131,6 +131,11 @@
   }
   .flag b{display:block; margin-bottom:3px}
 
+  /* a button whose destination doesn't exist yet */
+  .todo{opacity:.5; cursor:not-allowed}
+  .acts a.todo{border-style:dashed}
+  a.wa.todo{background:var(--muted)}
+
   .ph{
     background:var(--warnbg); color:var(--warn); border-radius:5px;
     padding:1px 7px; font-weight:800; font-size:.92em; white-space:nowrap;
@@ -260,10 +265,18 @@ var EVENT = {
 
   provisional: true,                   // set false once TOUCH confirms the timings
 
-  // --- PLACEHOLDERS: fill these in before you send the link ---
-  organiserName:  "[YOUR NAME]",
-  organiserPhone: "[YOUR MOBILE]",     // digits only, e.g. 8 digits — becomes a tap-to-call link
+  organiserName:  "Joy",
+
+  /* Deliberately left blank. This page is public and search-indexable, so a
+     mobile number here would be scraped and would outlive the event in caches.
+     Joy's number goes in the WhatsApp group message instead, where only
+     colleagues see it. Leave this empty and the Call button routes to the
+     group chat. Put digits here only if you accept it becoming public. */
+  organiserPhone: "",
+
+  // TODO: replace with the real invite link once the group exists.
   whatsappLink:   "[WHATSAPP GROUP LINK]",
+
   photoDeadline:  "tonight, by 10pm",
 
   // Run of show. Times are 24h "HH:MM". star:true = the unmissable one.
@@ -347,19 +360,36 @@ function showVal(v){ return isPlaceholder(v) ? '<span class="ph">' + esc(v) + '<
   $("datetime").textContent = EVENT.dateText + ", from " + fmtTime(hhmmToMins(EVENT.schedule[0].t));
   $("photoDue").textContent = "Please send them " + EVENT.photoDeadline + ".";
 
-  $("orgLine").innerHTML = showVal(EVENT.organiserName) + " · " + showVal(EVENT.organiserPhone);
-
-  // action buttons
+  /* If a number is set, offer tap-to-call. If not, point people at the group
+     chat — Joy's number lives there, not on a public page. */
   var tel = String(EVENT.organiserPhone || "").replace(/[^0-9+]/g, "");
-  $("btnCall").href = (!isPlaceholder(EVENT.organiserPhone) && tel) ? "tel:" + tel : "#";
+  var hasTel = tel && !isPlaceholder(EVENT.organiserPhone);
+
+  $("orgLine").innerHTML = hasTel
+    ? showVal(EVENT.organiserName) + " · " + showVal(EVENT.organiserPhone)
+    : showVal(EVENT.organiserName) + ' · <span class="sub">number is in the WhatsApp group</span>';
+
+  $("btnCall").href = hasTel ? "tel:" + tel : (isPlaceholder(EVENT.whatsappLink) ? "#" : EVENT.whatsappLink);
+  $("btnCall").innerHTML = hasTel
+    ? '<span class="ic">📞</span>Call ' + esc(EVENT.organiserName)
+    : '<span class="ic">💬</span>Message the group';
 
   var maps = "https://www.google.com/maps/search/?api=1&query=" +
              encodeURIComponent(EVENT.venue + ", " + EVENT.address);
   $("btnMap").href = maps;
 
-  var wa = isPlaceholder(EVENT.whatsappLink) ? "#" : EVENT.whatsappLink;
-  $("btnWa").href = wa;
-  $("btnWa2").href = wa;
+  /* Until the group exists, don't hand people a button that silently does
+     nothing — say so on the button itself. */
+  var waReady = !isPlaceholder(EVENT.whatsappLink) && EVENT.whatsappLink;
+  $("btnWa").href  = waReady ? EVENT.whatsappLink : "#";
+  $("btnWa2").href = waReady ? EVENT.whatsappLink : "#";
+  if (!waReady){
+    $("btnWa").className = "todo";
+    $("btnWa").innerHTML = '<span class="ic">📸</span>Photo link<br>coming soon';
+    $("btnWa2").className = "wa todo";
+    $("btnWa2").textContent = "📸 Group chat link coming soon";
+    $("btnCall").className = "todo";
+  }
 })();
 
 /* ---- run of show ---- */

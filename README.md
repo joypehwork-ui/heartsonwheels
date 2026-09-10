@@ -19,6 +19,9 @@ whatsappLink:   "[WHATSAPP GROUP LINK]",
 Anything still in `[SQUARE BRACKETS]` shows up highlighted in amber on the page, so you can see at
 a glance what you've missed.
 
+Joy's mobile is deliberately NOT in the file — it goes in the WhatsApp message instead.
+Leave `organiserPhone` empty and the Call button points at the group chat.
+
 Once TOUCH confirms the timings, set `provisional: false` and the amber warning banner disappears.
 
 To change the run of show, edit the `schedule` list. `star: true` marks the group photo — that's
